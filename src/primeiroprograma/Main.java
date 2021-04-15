@@ -7,7 +7,7 @@ public class Main {
 
         String carros = JOptionPane.showInputDialog("Coloque a quantidade de carros");
         String pessoas = JOptionPane.showInputDialog("Coloque a quantidade de pessoas");
-        
+
         int carroNumero = Integer.parseInt(carros);
         int pessoaNumero = Integer.parseInt(pessoas);
 
