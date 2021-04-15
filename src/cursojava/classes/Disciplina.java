@@ -123,5 +123,4 @@ public class Disciplina {
         System.out.println(resultado);
 
     }
-
 }

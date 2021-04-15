@@ -103,7 +103,6 @@ public class Aluno {
             return false;
 
         }
-
     }
 
     @Override
@@ -156,6 +155,4 @@ public class Aluno {
 
         return entrada;
     }
-
-
 }
