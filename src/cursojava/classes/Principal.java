@@ -22,13 +22,6 @@ public class Principal {
         System.out.println(aluno.getNome() + "\n" +
                 aluno.getIdade() + "\n" + aluno.getDataNascimento() + "\n" + aluno.getNomeEscola());
 
-
-
-
-
-
-
-
     }
 
 }

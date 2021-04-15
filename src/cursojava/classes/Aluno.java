@@ -167,8 +167,6 @@ public class Aluno {
         String entrada;
         entrada = JOptionPane.showInputDialog("Coloque sua escola: ");
 
-        int number = 0;
-
         int parse = Integer.parseInt(entrada);
 
         if (parse >= 0) {
@@ -180,12 +178,6 @@ public class Aluno {
         }
 
         return entrada;
-
-
-
-
-
-
     }
 
 
