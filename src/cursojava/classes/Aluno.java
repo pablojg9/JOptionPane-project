@@ -1,6 +1,7 @@
 package cursojava.classes;
 
 import javax.swing.JOptionPane;
+import java.util.Objects;
 
 public class Aluno {
 
@@ -13,47 +14,15 @@ public class Aluno {
     private String nome;
     private int idade;
 
-    private float nota1;
-    private float nota2;
-    private float nota3;
-    private float nota4;
-    private float media;
+    private Disciplina disciplina = new Disciplina();
 
-
-    public float getNota1() {
-        return nota1;
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
     }
 
-    public void setNota1(float nota1) {
-        this.nota1 = nota1;
+    public Disciplina getDisciplina() {
+        return disciplina;
     }
-
-    public float getNota2() {
-        return nota2;
-    }
-
-    public void setNota2(float nota2) {
-        this.nota2 = nota2;
-    }
-
-    public float getNota3() {
-        return nota3;
-    }
-
-    public void setNota3(float nota3) {
-        this.nota3 = nota3;
-    }
-
-    public float getNota4() {
-        return nota4;
-    }
-
-    public void setNota4(float nota4) {
-        this.nota4 = nota4;
-    }
-
-
-
 
     public String getDataNascimento() {
         return dataNascimento;
@@ -119,14 +88,14 @@ public class Aluno {
         this.idade = idade;
     }
 
-    public float getMediaAluno() {
-        this.media = (nota1 + nota2 + nota3 + nota4) / 4;
+    public void getMediaAluno() {
 
-        return media;
+        disciplina.getResultado();
+
     }
 
     public boolean getAlunoAprovado() {
-       this.media = this.getMediaAluno();
+        float media = getDisciplina().getMedia();
 
         if (media >= 7) {
             return true;
@@ -135,6 +104,24 @@ public class Aluno {
 
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Aluno aluno = (Aluno) o;
+        return idade == aluno.idade && Objects.equals(dataNascimento, aluno.dataNascimento)
+                && Objects.equals(registroGeral, aluno.registroGeral)
+                    && Objects.equals(numeroCpf, aluno.numeroCpf)
+                        && Objects.equals(nomeMae, aluno.nomeMae)
+                            && Objects.equals(nomePai, aluno.nomePai)
+                                && Objects.equals(nomeEscola, aluno.nomeEscola) && Objects.equals(nome, aluno.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dataNascimento, registroGeral, numeroCpf, nomeMae, nomePai, nomeEscola, nome, idade);
     }
 
     public String getEntradaDadoNome() {
@@ -166,16 +153,6 @@ public class Aluno {
     public String getEntradaNomeEscola() {
         String entrada;
         entrada = JOptionPane.showInputDialog("Coloque sua escola: ");
-
-        int parse = Integer.parseInt(entrada);
-
-        if (parse >= 0) {
-            int confirmDialogText = JOptionPane.showConfirmDialog(null, "Coloque uma escola e nao um número");
-            if (confirmDialogText == JOptionPane.OK_OPTION) {
-                entrada = JOptionPane.showInputDialog("Coloque sua escola Novamente: ");
-
-            }
-        }
 
         return entrada;
     }

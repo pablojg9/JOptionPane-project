@@ -10,12 +10,10 @@ public class Principal {
         aluno.setIdade(aluno.getEntradaIdade());
         aluno.setDataNascimento(aluno.getEntradaDataNascimento());
         aluno.setNomeEscola(aluno.getEntradaNomeEscola());
+        aluno.getMediaAluno();
 
 
-        aluno.setNota1(10);
-        aluno.setNota2(10f);
-        aluno.setNota3(9.5f);
-        aluno.setNota4(9f);
+
 
 
 
