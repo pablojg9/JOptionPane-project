@@ -1,28 +1,37 @@
 package cursojava.classes;
 
+import com.java.constantes.StatusAluno;
+
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class Aluno {
+public class Aluno extends Pessoa{
 
-    private String dataNascimento;
-    private String registroGeral;
-    private String numeroCpf;
-    private String nomeMae;
-    private String nomePai;
+    private String dataMatricula;
     private String nomeEscola;
-    private String nome;
-    private int idade;
+    private String serieMatricula;
+    private String disciplina;
 
-    private Disciplina disciplina = new Disciplina();
-
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
+    @Override
+    public double salario() {
+        return 1500.00D;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+
+    private List<Disciplina>  disciplinas = new ArrayList<Disciplina>();
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+
+
 
     public String getDataNascimento() {
         return dataNascimento;
@@ -41,7 +50,7 @@ public class Aluno {
     }
 
     public String getNumeroCpf() {
-        return numeroCpf;
+        return super.numeroCpf;
     }
 
     public void setNumeroCpf(String numeroCpf) {
@@ -73,7 +82,7 @@ public class Aluno {
     }
 
     public String getNome() {
-        return nome;
+        return super.nome;
     }
 
     public void setNome(String nome) {
@@ -81,28 +90,23 @@ public class Aluno {
     }
 
     public int getIdade() {
-        return idade;
+        return super.idade;
     }
 
     public void setIdade(int idade) {
         this.idade = idade;
     }
 
-    public void getMediaAluno() {
+    public float getMediaAluno() {
 
-        disciplina.getResultado();
+        float somaNotas = 0.0f;
 
-    }
-
-    public boolean getAlunoAprovado() {
-        float media = getDisciplina().getMedia();
-
-        if (media >= 7) {
-            return true;
-        } else {
-            return false;
-
+        for (Disciplina disciplina : disciplinas) {
+            somaNotas += disciplina.getNota();
         }
+
+        return somaNotas / disciplinas.size();
+
     }
 
     @Override
@@ -131,6 +135,10 @@ public class Aluno {
         return entrada;
 
     }
+
+
+
+
     public int getEntradaIdade() {
         String entrada = JOptionPane.showInputDialog("Coloque sua idade: ");
 
@@ -141,6 +149,7 @@ public class Aluno {
     }
 
     public String getEntradaDataNascimento() {
+            
 
         String entrada;
         entrada = JOptionPane.showInputDialog("Coloque sua data de nascimento: " + "\n" + "EXEMPLO: xx/xx/xxxx");
@@ -155,4 +164,49 @@ public class Aluno {
 
         return entrada;
     }
+
+
+    public String getStatus() {
+        float media = this.getMediaAluno();
+
+        String result = String.valueOf(media);
+
+
+        if (media >= 5) {
+           if (media >= 7) {
+               return StatusAluno.APROVADO;
+           }
+        return StatusAluno.RECUPERACAO;
+
+        } else {
+            System.out.println(StatusAluno.REPROVADO);
+        }
+
+        return result;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Aluno{" +
+                "dataNascimento='" + dataNascimento + '\'' +
+                ", registroGeral='" + registroGeral + '\'' +
+                ", numeroCpf='" + numeroCpf + '\'' +
+                ", nomeMae='" + nomeMae + '\'' +
+                ", nomePai='" + nomePai + '\'' +
+                ", nomeEscola='" + nomeEscola + '\'' +
+                ", nome='" + nome + '\'' +
+                ", idade=" + idade +
+                ", disciplina=" +
+                '}';
+
+    }
+
+    @Override
+    public boolean retornarIdade() {
+        return super.retornarIdade();
+    }
 }
+
+
