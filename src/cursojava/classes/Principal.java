@@ -1,5 +1,7 @@
 package cursojava.classes;
 
+import com.classesauxiliares.FuncaoAutenticacao;
+import com.interfaces.projetos.PermitirAcesso;
 import com.java.constantes.StatusAluno;
 
 import javax.swing.JOptionPane;
@@ -14,60 +16,72 @@ public class Principal {
         Aluno aluno = new Aluno();
         Disciplina disciplina = new Disciplina();
 
-        HashMap<String, List<Aluno>> map = new HashMap<String, List<Aluno>>();
+        try {
+            String login = JOptionPane.showInputDialog("Digite seu login: ");
+            String senha = JOptionPane.showInputDialog("Digite sua senha: ");
 
-        List<Aluno> alunos = new ArrayList<Aluno>();
+            FuncaoAutenticacao funcaoAutenticacao;
+            PermitirAcesso permitirAcesso = new Secretario();
 
-        for (int qtd = 0; qtd <= 1; qtd++) {
+            if (new FuncaoAutenticacao(permitirAcesso).autenticar()) {
+                HashMap<String, List<Aluno>> map = new HashMap<String, List<Aluno>>();
 
+                List<Aluno> alunos = new ArrayList<Aluno>();
 
-            aluno.setNome(aluno.getEntradaDadoNome());
-            aluno.setIdade(aluno.getEntradaIdade());
-            aluno.setDataNascimento(aluno.getEntradaDataNascimento());
-            aluno.setNomeEscola(aluno.getEntradaNomeEscola());
-            aluno.getMediaAluno();
-
-
-
-
-            for (int pos = 1; pos <= 4; pos++) {
-                Disciplina disciplina1 = new Disciplina();
-                Disciplina notaDisciplina = new Disciplina();
-
-                String nomeDisciplina = JOptionPane.showInputDialog("Disciplina: ");
-                disciplina1.setDisciplina(nomeDisciplina);
-
-                String notaDisciplina2 = JOptionPane.showInputDialog("Nota da Disciplina: ");
-                float resultado = Float.parseFloat(notaDisciplina2);
-                disciplina1.setNota(resultado);
-
-                aluno.getDisciplinas().add(disciplina);
-
-            }
-
-            int confirmDialogResult = JOptionPane.showConfirmDialog(null,
-                    "Deseja remover alguma disciplina? ");
+                for (int qtd = 0; qtd <= 1; qtd++) {
 
 
-            for (int counter = 1; counter <= 4; counter++) {
-                if (confirmDialogResult == 0) {
-                    String dialogRemove = JOptionPane.showInputDialog("Qual a disciplina você quer remover ");
+                    aluno.setNome(aluno.getEntradaDadoNome());
+                    aluno.setIdade(aluno.getEntradaIdade());
+                    aluno.setDataNascimento(aluno.getEntradaDataNascimento());
+                    aluno.setNomeEscola(aluno.getEntradaNomeEscola());
+                    aluno.getMediaAluno();
+
+                    for (int pos = 1; pos <= 4; pos++) {
+                        Disciplina disciplina1 = new Disciplina();
+                        Disciplina notaDisciplina = new Disciplina();
+
+                        String nomeDisciplina = JOptionPane.showInputDialog("Disciplina: ");
+                        disciplina1.setDisciplina(nomeDisciplina);
+
+                        String notaDisciplina2 = JOptionPane.showInputDialog("Nota da Disciplina: ");
+                        float resultado = Float.parseFloat(notaDisciplina2);
+                        disciplina1.setNota(resultado);
+
+                        aluno.getDisciplinas().add(disciplina);
+
+                    }
+
+                    int confirmDialogResult = JOptionPane.showConfirmDialog(null,
+                            "Deseja remover alguma disciplina? ");
 
 
-                    aluno.getDisciplinas().remove(Integer.valueOf(dialogRemove).intValue() - 1);
+                    for (int counter = 1; counter <= 4; counter++) {
+                        if (confirmDialogResult == 0) {
+                            String dialogRemove = JOptionPane.showInputDialog("Qual a disciplina você quer remover ");
+
+
+                            aluno.getDisciplinas().remove(Integer.valueOf(dialogRemove).intValue() - 1);
+                        }
+                    }
+                    aluno.getMediaAluno();
                 }
+
+                map.put(StatusAluno.APROVADO, new ArrayList<Aluno>());
+                map.put(StatusAluno.REPROVADO, new ArrayList<Aluno>());
+                map.put(StatusAluno.RECUPERACAO, new ArrayList<Aluno>());
+
+
+                System.out.println(aluno.getNome() + "\n" +
+                        aluno.getIdade() + "\n" + aluno.getDataNascimento() + "\n" + aluno.getNomeEscola());
+                String informacoes = aluno.toString();
+                System.out.println(informacoes);
+            } else {
+                JOptionPane.showMessageDialog(null, "Login e senha invalida!");
             }
-            aluno.getMediaAluno();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        map.put(StatusAluno.APROVADO, new ArrayList<Aluno>());
-        map.put(StatusAluno.REPROVADO, new ArrayList<Aluno>());
-        map.put(StatusAluno.RECUPERACAO, new ArrayList<Aluno>());
-
-
-        System.out.println(aluno.getNome() + "\n" +
-                aluno.getIdade() + "\n" + aluno.getDataNascimento() + "\n" + aluno.getNomeEscola());
-        String informacoes = aluno.toString();
-        System.out.println(informacoes);
     }
 }
