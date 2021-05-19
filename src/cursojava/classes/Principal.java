@@ -17,6 +17,7 @@ public class Principal {
         Disciplina disciplina = new Disciplina();
 
         try {
+
             String login = JOptionPane.showInputDialog("Digite seu login: ");
             String senha = JOptionPane.showInputDialog("Digite sua senha: ");
 
@@ -41,15 +42,22 @@ public class Principal {
                         Disciplina disciplina1 = new Disciplina();
                         Disciplina notaDisciplina = new Disciplina();
 
-                        String nomeDisciplina = JOptionPane.showInputDialog("Disciplina: ");
-                        disciplina1.setDisciplina(nomeDisciplina);
+                        try {
+                            String nomeDisciplina = JOptionPane.showInputDialog("Disciplina: ");
+                            disciplina1.setDisciplina(nomeDisciplina);
 
-                        String notaDisciplina2 = JOptionPane.showInputDialog("Nota da Disciplina: ");
-                        float resultado = Float.parseFloat(notaDisciplina2);
-                        disciplina1.setNota(resultado);
+                            String notaDisciplina2 = JOptionPane.showInputDialog("Nota da Disciplina: ");
+                            float resultado = Float.parseFloat(notaDisciplina2);
+                            disciplina1.setNota(resultado);
 
+                        } catch (NumberFormatException n) {
+                            n.printStackTrace();
+                            JOptionPane.showMessageDialog(null, "error ");
+
+
+                            n.printStackTrace();
+                        }
                         aluno.getDisciplinas().add(disciplina);
-
                     }
 
                     int confirmDialogResult = JOptionPane.showConfirmDialog(null,
@@ -80,8 +88,16 @@ public class Principal {
                 JOptionPane.showMessageDialog(null, "Login e senha invalida!");
             }
 
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             e.printStackTrace();
+            System.out.println("Mensagem de erro: " + e.getMessage());
+
+            for (int counter = 0; counter < e.getStackTrace().length; counter++) {
+                System.out.println("Classe de erro: " + e.getStackTrace()[counter].getClassName());
+                System.out.println("metodo de erro: " + e.getStackTrace()[counter].getMethodName());
+                System.out.println("linha de erro: " + e.getStackTrace()[counter].getLineNumber());
+
+            }
         }
     }
 }
