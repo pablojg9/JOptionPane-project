@@ -68,7 +68,6 @@ public class Principal {
                         if (confirmDialogResult == 0) {
                             String dialogRemove = JOptionPane.showInputDialog("Qual a disciplina você quer remover ");
 
-
                             aluno.getDisciplinas().remove(Integer.valueOf(dialogRemove).intValue() - 1);
                         }
                     }
@@ -88,16 +87,25 @@ public class Principal {
                 JOptionPane.showMessageDialog(null, "Login e senha invalida!");
             }
 
+
+            // tratamento de exceção
         } catch (NumberFormatException e) {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            // sempre usar printStackTrack() para saber o erro
             e.printStackTrace();
             System.out.println("Mensagem de erro: " + e.getMessage());
 
+
             for (int counter = 0; counter < e.getStackTrace().length; counter++) {
-                System.out.println("Classe de erro: " + e.getStackTrace()[counter].getClassName());
-                System.out.println("metodo de erro: " + e.getStackTrace()[counter].getMethodName());
-                System.out.println("linha de erro: " + e.getStackTrace()[counter].getLineNumber());
+                stringBuilder.append("Classe de erro -> ").append(e.getStackTrace()[counter].getClassName());
+                stringBuilder.append("metodo de erro -> ").append(e.getStackTrace()[counter].getMethodName());
+                stringBuilder.append("linha de erro -> ").append(e.getStackTrace()[counter].getLineNumber());
 
             }
+
+        }finally { // finally sempre é executado com erro ou não
+            JOptionPane.showMessageDialog(null, "Obrigado por aprender java");
         }
     }
 }
