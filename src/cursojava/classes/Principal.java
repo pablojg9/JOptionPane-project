@@ -1,14 +1,14 @@
 package cursojava.classes;
 
 import com.classesauxiliares.FuncaoAutenticacao;
+import com.excecao.ExcecaoProcessarNota;
 import com.interfaces.projetos.PermitirAcesso;
 import com.java.constantes.StatusAluno;
 
 import javax.swing.JOptionPane;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class Principal {
     public static void main(String[] args) {
@@ -17,6 +17,13 @@ public class Principal {
         Disciplina disciplina = new Disciplina();
 
         try {
+            try {
+                File file = new File("c://teste");
+                Scanner scanner = new Scanner(file);
+            } catch (FileNotFoundException e) {
+                throw new ExcecaoProcessarNota(e.getMessage());
+            }
+
 
             String login = JOptionPane.showInputDialog("Digite seu login: ");
             String senha = JOptionPane.showInputDialog("Digite sua senha: ");
@@ -89,7 +96,7 @@ public class Principal {
 
 
             // tratamento de exceção
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | ExcecaoProcessarNota e) {
             StringBuilder stringBuilder = new StringBuilder();
 
             // sempre usar printStackTrack() para saber o erro
