@@ -1,11 +1,6 @@
 package cursojava.classes;
 
-import javax.swing.JOptionPane;
 import java.util.Objects;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 // Disciplina servirá para todos os objetos
 

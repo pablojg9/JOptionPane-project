@@ -8,7 +8,10 @@ import com.java.constantes.StatusAluno;
 import javax.swing.JOptionPane;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) {
@@ -23,7 +26,6 @@ public class Principal {
             } catch (FileNotFoundException e) {
                 throw new ExcecaoProcessarNota(e.getMessage());
             }
-
 
             String login = JOptionPane.showInputDialog("Digite seu login: ");
             String senha = JOptionPane.showInputDialog("Digite sua senha: ");
@@ -108,7 +110,6 @@ public class Principal {
                 stringBuilder.append("Classe de erro -> ").append(e.getStackTrace()[counter].getClassName());
                 stringBuilder.append("metodo de erro -> ").append(e.getStackTrace()[counter].getMethodName());
                 stringBuilder.append("linha de erro -> ").append(e.getStackTrace()[counter].getLineNumber());
-
             }
 
         }finally { // finally sempre é executado com erro ou não
