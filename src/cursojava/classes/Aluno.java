@@ -97,34 +97,30 @@ public class Aluno extends Pessoa{
         this.idade = idade;
     }
 
-    public float getMediaAluno() {
-
-        float somaNotas = 0.0f;
-
-        for (Disciplina disciplina : disciplinas) {
-            somaNotas += disciplina.getNota();
-        }
-
-        return somaNotas / disciplinas.size();
-
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Aluno aluno = (Aluno) o;
-        return idade == aluno.idade && Objects.equals(dataNascimento, aluno.dataNascimento)
-                && Objects.equals(registroGeral, aluno.registroGeral)
-                    && Objects.equals(numeroCpf, aluno.numeroCpf)
-                        && Objects.equals(nomeMae, aluno.nomeMae)
-                            && Objects.equals(nomePai, aluno.nomePai)
-                                && Objects.equals(nomeEscola, aluno.nomeEscola) && Objects.equals(nome, aluno.nome);
+        return Objects.equals(dataMatricula, aluno.dataMatricula) && Objects.equals(nomeEscola, aluno.nomeEscola) && Objects.equals(serieMatricula, aluno.serieMatricula) && Objects.equals(disciplina, aluno.disciplina) && Objects.equals(disciplinas, aluno.disciplinas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dataNascimento, registroGeral, numeroCpf, nomeMae, nomePai, nomeEscola, nome, idade);
+        return Objects.hash(dataMatricula, nomeEscola, serieMatricula, disciplina, disciplinas);
+    }
+
+    public float getMediaAluno() {
+
+        float somaNotas = 0.0f;
+
+        for (Disciplina disciplina : disciplinas) {
+            somaNotas += disciplina.getMediaNota();
+        }
+
+
+        return somaNotas / disciplinas.size();
+
     }
 
     public String getEntradaDadoNome() {
@@ -135,9 +131,6 @@ public class Aluno extends Pessoa{
         return entrada;
 
     }
-
-
-
 
     public int getEntradaIdade() {
         String entrada = JOptionPane.showInputDialog("Coloque sua idade: ");
@@ -184,8 +177,6 @@ public class Aluno extends Pessoa{
 
         return result;
     }
-
-
 
     @Override
     public String toString() {

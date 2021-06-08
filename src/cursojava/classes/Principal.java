@@ -56,8 +56,7 @@ public class Principal {
                             disciplina1.setDisciplina(nomeDisciplina);
 
                             String notaDisciplina2 = JOptionPane.showInputDialog("Nota da Disciplina: ");
-                            float resultado = Float.parseFloat(notaDisciplina2);
-                            disciplina1.setNota(resultado);
+                            disciplina1.setDisciplina(notaDisciplina2);
 
                         } catch (NumberFormatException n) {
                             n.printStackTrace();

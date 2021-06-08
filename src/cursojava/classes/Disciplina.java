@@ -7,14 +7,14 @@ import java.util.Objects;
 public class Disciplina {
 
     @SuppressWarnings("unused")
-    private float nota;
+    private float[] nota = new float[4];
     private String disciplina;
 
-    public float getNota() {
+    public float[] getNota() {
         return nota;
     }
 
-    public void setNota(float nota) {
+    public void setNota(float[] nota) {
         this.nota = nota;
     }
 
@@ -26,13 +26,6 @@ public class Disciplina {
         this.disciplina = disciplina;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Disciplina that = (Disciplina) o;
-        return Float.compare(that.nota, nota) == 0 && disciplina.equals(that.disciplina);
-    }
 
     @Override
     public int hashCode() {
@@ -46,4 +39,14 @@ public class Disciplina {
                 ", disciplina='" + disciplina + '\'' +
                 '}';
     }
+
+    public float getMediaNota() {
+        float somaTotal = 0;
+
+        for (int i = 0; i < getNota().length; i++) {
+            somaTotal += getNota()[i];
+        }
+        return somaTotal / 4;
+    }
+
 }
