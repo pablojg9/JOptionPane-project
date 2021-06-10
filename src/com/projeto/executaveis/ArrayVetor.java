@@ -1,10 +1,34 @@
 package com.projeto.executaveis;
 
+import cursojava.classes.Aluno;
+import cursojava.classes.Disciplina;
+
 import javax.swing.JOptionPane;
 
 public class ArrayVetor {
     public static void main(String[] args) {
+
+        Aluno aluno = new Aluno();
         StringBuilder stringBuilder = new StringBuilder();
+
+        aluno.setNome("Pablo Junior");
+        aluno.setNomeEscola("Jdev treinamentos");
+
+        Disciplina disciplina = new Disciplina();
+
+        disciplina.setDisciplina("curso de java");
+
+        float[] notasMedia = {
+                8.8f,
+                7.4f,
+        };
+
+        disciplina.setNota(notasMedia);
+
+        System.out.println("Nome do aluno" + aluno.getNome());
+        for(Disciplina dis : aluno.getDisciplinas()) {
+            System.out.println();
+        }
 
         //TIPO DE DADOS ARRAY - NOME DA VARIAVEL DO ARRAY - LIMITE DO ARRAY
         String posicao = JOptionPane.showInputDialog("Quantas posições o array precisa ter: ");
