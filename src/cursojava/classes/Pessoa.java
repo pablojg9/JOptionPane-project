@@ -15,7 +15,6 @@ public abstract class Pessoa {
     public abstract double salario();
 
 
-
     public String getDataNascimento() {
         return dataNascimento;
     }

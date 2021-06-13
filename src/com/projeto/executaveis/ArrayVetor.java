@@ -9,15 +9,34 @@ public class ArrayVetor {
     public static void main(String[] args) {
 
         Aluno aluno = new Aluno();
-        StringBuilder stringBuilder = new StringBuilder();
 
         aluno.setNome("Pablo Junior");
         aluno.setNomeEscola("Jdev treinamentos");
 
         Disciplina disciplina = new Disciplina();
 
+        Aluno[] alunosArray = new Aluno[1];
+
+        alunosArray[0] = aluno;
+
         disciplina.setDisciplina("curso de java");
 
+        for (int counterPosition = 0; counterPosition < alunosArray.length; counterPosition++) {
+            System.out.println("Nome do aluno é " + alunosArray[counterPosition].getNome());
+
+            for (Disciplina d : alunosArray[counterPosition].getDisciplinas()) {
+                System.out.println("Nome da disciplina é: " + d.getDisciplina());
+
+                for (int notasLoop = 0; notasLoop < d.getNota().length; notasLoop++) {
+                    System.out.println("A" + notasLoop + "º notas dos alunos = " + d.getNota()[notasLoop]);
+                }
+            }
+        }
+
+
+
+
+        /*
         float[] notasMedia = {
                 8.8f,
                 7.4f,
@@ -29,6 +48,9 @@ public class ArrayVetor {
         for(Disciplina dis : aluno.getDisciplinas()) {
             System.out.println();
         }
+
+
+
 
         //TIPO DE DADOS ARRAY - NOME DA VARIAVEL DO ARRAY - LIMITE DO ARRAY
         String posicao = JOptionPane.showInputDialog("Quantas posições o array precisa ter: ");
@@ -44,5 +66,7 @@ public class ArrayVetor {
            stringBuilder.append("nota ").append(counter + 1).append(" é = ").append(notas[counter]).append("\n");
         }
         JOptionPane.showMessageDialog(null, stringBuilder.toString());
+    }
+}*/
     }
 }
