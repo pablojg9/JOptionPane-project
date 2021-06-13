@@ -1,5 +1,8 @@
 package com.projeto.executaveis;
 
+
+import java.util.Scanner;
+
 public class Matriz {
     public static void main(String[] args) {
 
@@ -18,14 +21,8 @@ public class Matriz {
 
             for(int counter2 : notas[counter]){
                 System.out.println("Matriz: " + counter2);
-
-
             }
-
         }
-
-
-
     }
 
 }
