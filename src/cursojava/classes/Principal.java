@@ -82,6 +82,7 @@ public class Principal {
                     aluno.getMediaAluno();
                 }
 
+
                 map.put(StatusAluno.APROVADO, new ArrayList<Aluno>());
                 map.put(StatusAluno.REPROVADO, new ArrayList<Aluno>());
                 map.put(StatusAluno.RECUPERACAO, new ArrayList<Aluno>());

@@ -11,7 +11,7 @@ public class ThreadClassDuo {
             public void run() {
                 for(int position = 0; position < 10; position++) {
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -21,6 +21,27 @@ public class ThreadClassDuo {
                 super.run();
             }
         }.start();
+
+        /**
+         * Apredendo Thread rodando pro trás dos panos.
+         *
+         * THREAD em 2 processamento paralelos **/
+        new Thread() {
+            @Override
+            public void run() {
+                for(int position = 0; position < 10; position++) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println("Executando alguma rotina - envio de nota fiscal");
+                }
+                super.run();
+            }
+        }.start();
+
 
 
         System.out.println("O código chegou no fim");
