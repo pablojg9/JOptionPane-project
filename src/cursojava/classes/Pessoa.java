@@ -10,6 +10,7 @@ public abstract class Pessoa {
     protected String nomeEscola;
     protected String nome;
     protected int idade;
+    protected String sobreNome;
 
 
     public abstract double salario();

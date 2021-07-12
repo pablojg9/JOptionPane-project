@@ -6,7 +6,6 @@ import java.util.Objects;
 
 public class Disciplina {
 
-    @SuppressWarnings("unused")
     private float[] nota = new float[4];
     private String disciplina;
 

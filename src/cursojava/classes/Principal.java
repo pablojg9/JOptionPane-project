@@ -20,13 +20,6 @@ public class Principal {
         Disciplina disciplina = new Disciplina();
 
         try {
-            try {
-                File file = new File("c://teste");
-                Scanner scanner = new Scanner(file);
-            } catch (FileNotFoundException e) {
-                throw new ExcecaoProcessarNota(e.getMessage());
-            }
-
             String login = JOptionPane.showInputDialog("Digite seu login: ");
             String senha = JOptionPane.showInputDialog("Digite sua senha: ");
 
@@ -98,7 +91,7 @@ public class Principal {
 
 
             // tratamento de exceção
-        } catch (NumberFormatException | ExcecaoProcessarNota e) {
+        } catch (NumberFormatException e) {
             StringBuilder stringBuilder = new StringBuilder();
 
             // sempre usar printStackTrack() para saber o erro
@@ -116,4 +109,5 @@ public class Principal {
             JOptionPane.showMessageDialog(null, "Obrigado por aprender java");
         }
     }
+
 }
